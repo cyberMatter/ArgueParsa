@@ -20,7 +20,7 @@ It is not a model of what makes an argument *good* — it's a heuristic keyword 
 
 ## Example
 
-```text
+```
 $ python main.py
 
 ╭───────────────────────────────────────────────────────────────────╮
@@ -35,11 +35,56 @@ drains doctors from the public system, which forces understaffing...
 ┌─────────────────┬─────────────────────────────┐
 │ Component       │ Status / Score              │
 ├─────────────────┼─────────────────────────────┤
-│ Claim           │ Detected                    │
-│ Reasoning Depth │ 3 causal links (Target: 3+) │
-│ Example         │ Detected                    │
-│ Impact          │ Detected                    │
-│ Comparison      │ Detected                    │
+│ Claim            │ Detected                    │
+│ Reasoning Depth  │ 3 causal links (Target: 3+) │
+│ Example          │ Detected                    │
+│ Impact           │ Detected                    │
+│ Comparison       │ Detected                    │
 └─────────────────┴─────────────────────────────┘
 
 Strong logic depth detected. Solid use of causal linkages.
+```
+
+## Quick start
+
+Requires Python 3.8 or later.
+
+```bash
+git clone https://github.com/YOUR-USERNAME/creic-evaluator.git
+cd creic-evaluator
+pip install -r requirements.txt
+python main.py
+```
+
+## Project structure
+
+```
+creic-evaluator/
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── .gitignore
+├── main.py                 # CLI entry point
+└── evaluator/
+    ├── __init__.py
+    ├── parser.py            # component detection (Claim/Example/Impact/Comparison)
+    └── metrics.py           # causal-depth scoring and recommendations
+```
+
+## Limitations
+
+This is keyword-based, not semantic — it won't catch a well-reasoned argument that avoids its trigger words, and it can be fooled by an argument that uses the right words without the right logic behind them. It's built to catch the most common failure mode in debate prep (stopping too early), not to replace a coach's ear.
+
+## Roadmap
+
+- [ ] Streamlit web UI for live prep-time use
+- [ ] Dependency-tree parsing (spaCy) instead of keyword matching, for genuine clause-level detection
+- [ ] Exportable PDF breakdown for team debriefs
+
+## Contributing
+
+Issues and pull requests are welcome — this started as a personal debate-prep tool, so feedback from other debaters on what's actually useful in round is especially valuable.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
